@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Repos\\visorParcelas_1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{45BC787F-1F6C-481A-B830-A87F2411B49A}|visorParcelas_1\\visorParcelas_1.csproj|d:\\repos\\visorparcelas_1\\visorparcelas_1\\visorparcelas_1.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{45BC787F-1F6C-481A-B830-A87F2411B49A}|visorParcelas_1\\visorParcelas_1.csproj|solutionrelative:visorparcelas_1\\visorparcelas_1.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "visorParcelas_1",
+              "DocumentMoniker": "D:\\Repos\\visorParcelas_1\\visorParcelas_1\\visorParcelas_1.csproj",
+              "RelativeDocumentMoniker": "visorParcelas_1\\visorParcelas_1.csproj",
+              "ToolTip": "D:\\Repos\\visorParcelas_1\\visorParcelas_1\\visorParcelas_1.csproj",
+              "RelativeToolTip": "visorParcelas_1\\visorParcelas_1.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-03-04T09:15:54.982Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
