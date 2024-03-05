@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Npgsql;
 //using Newtonsoft.Json;
 
@@ -35,8 +36,8 @@ namespace visorParcelas_1.Controllers
             //Creación del comando
             NpgsqlCommand command = connection.CreateCommand();
 
-            command.CommandText = $"SELECT * FROM public.\"t$recinto\" WHERE provincia = {provincia} AND municipio = {municipio} AND agregado = " +
-                $"{agregado} AND zona = {zona} AND poligono = {poligono} AND parcela = {parcela} AND recinto = {recinto}";
+            command.CommandText = $"SELECT ST_AsGeoJSON(dn_geom) FROM public.\"t$recinto\" WHERE provincia = {provincia} AND municipio = {municipio} AND agregado = " +
+            $"{agregado} AND zona = {zona} AND poligono = {poligono} AND parcela = {parcela} AND recinto = {recinto}";
 
 
             NpgsqlDataReader reader = command.ExecuteReader();
@@ -44,57 +45,38 @@ namespace visorParcelas_1.Controllers
             //try
             //{
             if (reader.Read())
-            {
 
-                Console.WriteLine(reader.GetDouble(reader.GetOrdinal("provincia")));
-                // pruebas para ver si encuentro el valos de la columna, solo he encontrado el nombre xd
-                //var nombre = reader.GetColumnSchema()[0].ColumnName;
-                //Console.WriteLine($"ColumnName: {nombre}");
-                //var nombre2 = reader.GetColumnSchema()[0].ColumnOrdinal;
-                //Console.WriteLine($"ColumnOrdinal: {nombre2}");
-                //var nombre3 = reader.GetColumnSchema()[0].DefaultValue;
-                //Console.WriteLine($"DefaultValue: {nombre3}" + nombre3.ToString());
-                //var nombre4 = reader.GetColumnSchema()[0].ColumnAttributeNumber;
-                //Console.WriteLine($"ColumnAttributeNumber: {nombre4}");
-                //var nombre5 = reader.GetColumnSchema()[0].BaseColumnName;
-                //Console.WriteLine($"BaseColumnName: {nombre5}" + nombre5.ToString());
-                //var nombre6 = reader.GetColumnSchema()[0];
-                //Console.WriteLine($".GetColumnSchema()[0]; a secas: {nombre6}" + nombre6);
-
-                //// Creación del objeto GeoJSON
-                //var geoJson = new
-                //{
-                //    type = "Feature",
-                //    geometry = new
-                //    {
-                //        type = "Point",
-                //        coordinates = new[] { longitude, latitude }
-                //    },
-                //    properties = new
-                //    {
-                //        provincia,
-                //        municipio,
-                //        agregado,
-                //        zona,
-                //        poligono,
-                //        parcela,
-                //        recinto,
-                //        altitud,
-                //        pendiente_media = pendienteMedia // Cambia el nombre según tus necesidades
-                //    }
-                //};
-
-                //// Serialización del objeto GeoJSON
-                //var geoJsonString = JsonConvert.SerializeObject(geoJson);
-
-                // Ahora puedes usar 'geoJsonString' como respuesta en tu API REST
-
-            }
-            //}
-            //catch (Exception ex)
+                Console.WriteLine(reader.GetString(0));
+            //var altitud = reader.GetDouble(reader.GetOrdinal("altitud"));
+            //var pendiente_media = reader.GetDouble(reader.GetOrdinal("pendiente_media"));
+            //var longitude = reader.GetDouble(reader.GetOrdinal("geocentro_x"));
+            //var latitude = reader.GetDouble(reader.GetOrdinal("geocentro_y"));
+            //// Creación del objeto GeoJSON
+            //var geoJson = new
             //{
-            //    Console.WriteLine("Error al procesar la solicitud");
-            //}
+            //    type = "Feature",
+            //    geometry = new
+            //    {
+            //        type = "Point",
+            //        coordinates = new[] { longitude, latitude }
+            //    },
+            //    properties = new
+            //    {
+            //        provincia,
+            //        municipio,
+            //        agregado,
+            //        zona,
+            //        poligono,
+            //        parcela,
+            //        recinto,
+            //        altitud,
+            //        pendiente_media  // Cambia el nombre según tus necesidades
+            //    }
+            //};
+
+            //// Serialización del objeto GeoJSON
+            //var geoJsonString = JsonConvert.SerializeObject(geoJson);
+
         }
     }
 }
