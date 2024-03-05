@@ -1,5 +1,57 @@
 [
   {
+    "ContainingType": "visorParcelas_1.Controllers.RecintosController",
+    "Method": "Get",
+    "RelativePath": "Recintos/{Provinvia}/{Municipio}/{Agregado}/{Zona}/{Pol\u00EDgono}/{Parcela}/{Recinto}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Provinvia",
+        "Type": "",
+        "IsRequired": true
+      },
+      {
+        "Name": "Municipio",
+        "Type": "",
+        "IsRequired": true
+      },
+      {
+        "Name": "Agregado",
+        "Type": "",
+        "IsRequired": true
+      },
+      {
+        "Name": "Zona",
+        "Type": "",
+        "IsRequired": true
+      },
+      {
+        "Name": "Pol\u00EDgono",
+        "Type": "",
+        "IsRequired": true
+      },
+      {
+        "Name": "Parcela",
+        "Type": "",
+        "IsRequired": true
+      },
+      {
+        "Name": "Recinto",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "visorParcelas_1.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",
