@@ -25,7 +25,7 @@ namespace visorParcelas_1.Controllers
         }
 
         //Código que hace que aparezca el controlador en pantalla
-        [HttpGet("{Provincia}/{Municipio}/{Agregado}/{Zona}/{Polígono}/{Parcela}/{Recinto}")]
+        [HttpGet("recinto/{provincia}/{municipio}/{agregado}/{zona}/{poligono}/{parcela}/{recinto}")]
         public async void Get(string provincia, string municipio, int agregado, int zona, int poligono, int parcela, int recinto)
         {
 
@@ -38,7 +38,7 @@ namespace visorParcelas_1.Controllers
             //Creación del comando
             NpgsqlCommand command = connection.CreateCommand();
 
-            command.CommandText =  $"SELECT * FROM recintos WHERE provincia = {provincia} AND municipio = {municipio} AND agregado = " +
+            command.CommandText = $"SELECT * FROM recintos WHERE provincia = {provincia} AND municipio = {municipio} AND agregado = " +
                 $"{agregado} AND zona = {zona} AND poligono = {poligono} AND parcela = {parcela} AND recinto = {recinto}";
 
             //NpgsqlDataReader reader = command.ExecuteReader();
