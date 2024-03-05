@@ -25,8 +25,9 @@ namespace visorParcelas_1.Controllers
         }
 
         //Código que hace que aparezca el controlador en pantalla
-        [HttpGet("{Provinvia}/{Municipio}/{Agregado}/{Zona}/{Polígono}/{Parcela}/{Recinto}")]
-        public async void Get() {
+        [HttpGet("{Provincia}/{Municipio}/{Agregado}/{Zona}/{Polígono}/{Parcela}/{Recinto}")]
+        public async void Get(string provincia, string municipio, int agregado, int zona, int poligono, int parcela, int recinto)
+        {
 
             //Conexión con la base de datos
             var connectionString = "Host = 172.17.11.154;Username=postgres;Password=postgres;DataBase=DATOS_PRUEBA";
@@ -37,18 +38,15 @@ namespace visorParcelas_1.Controllers
             //Creación del comando
             NpgsqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "SELECT * FROM ccaa";
+            command.CommandText =  $"SELECT * FROM recintos WHERE provincia = {provincia} AND municipio = {municipio} AND agregado = " +
+                $"{agregado} AND zona = {zona} AND poligono = {poligono} AND parcela = {parcela} AND recinto = {recinto}";
 
-            NpgsqlDataReader reader = command.ExecuteReader();
+            //NpgsqlDataReader reader = command.ExecuteReader();
 
-            while (reader.Read())
-            {
-                Console.WriteLine(reader["nombre"].ToString());
-            }
-
-            var name = this.Request.Form["name"];
-
-            
+            //while (reader.Read())
+            //{
+            //    Console.WriteLine(reader["nombre"].ToString());
+            //}
         }
 
     }
