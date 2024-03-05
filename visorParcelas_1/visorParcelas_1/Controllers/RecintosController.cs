@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Npgsql;
-using Npgsql.Schema;
-using System.Buffers;
-using System.Collections.ObjectModel;
-using System.Data;
 //using Newtonsoft.Json;
 
 namespace visorParcelas_1.Controllers
@@ -27,7 +23,7 @@ namespace visorParcelas_1.Controllers
 
         //Código que hace que aparezca el controlador en pantalla
         [HttpGet("recinto/{provincia}/{municipio}/{agregado}/{zona}/{poligono}/{parcela}/{recinto}")]
-        public async void Get(string provincia, string municipio, int agregado, int zona, int poligono, int parcela, int recinto)
+        public async void Get(int provincia = 28, int municipio = 85, int agregado = 0, int zona = 0, int poligono = 1, int parcela = 1, int recinto = 8)
         {
 
             //Conexión con la base de datos
@@ -49,19 +45,21 @@ namespace visorParcelas_1.Controllers
             //{
             if (reader.Read())
             {
+
+                Console.WriteLine(reader.GetDouble(reader.GetOrdinal("provincia")));
                 // pruebas para ver si encuentro el valos de la columna, solo he encontrado el nombre xd
-                var nombre = reader.GetColumnSchema()[0].ColumnName;
-                Console.WriteLine($"ColumnName: {nombre}");
-                var nombre2 = reader.GetColumnSchema()[0].ColumnOrdinal;
-                Console.WriteLine($"ColumnOrdinal: {nombre2}");
-                var nombre3 = reader.GetColumnSchema()[0].DefaultValue;
-                Console.WriteLine($"DefaultValue: {nombre3}" + nombre3.ToString());
-                var nombre4 = reader.GetColumnSchema()[0].ColumnAttributeNumber;
-                Console.WriteLine($"ColumnAttributeNumber: {nombre4}");
-                var nombre5 = reader.GetColumnSchema()[0].BaseColumnName;
-                Console.WriteLine($"BaseColumnName: {nombre5}" + nombre5.ToString());
-                var nombre6 = reader.GetColumnSchema()[0];
-                Console.WriteLine($".GetColumnSchema()[0]; a secas: {nombre6}" + nombre6);
+                //var nombre = reader.GetColumnSchema()[0].ColumnName;
+                //Console.WriteLine($"ColumnName: {nombre}");
+                //var nombre2 = reader.GetColumnSchema()[0].ColumnOrdinal;
+                //Console.WriteLine($"ColumnOrdinal: {nombre2}");
+                //var nombre3 = reader.GetColumnSchema()[0].DefaultValue;
+                //Console.WriteLine($"DefaultValue: {nombre3}" + nombre3.ToString());
+                //var nombre4 = reader.GetColumnSchema()[0].ColumnAttributeNumber;
+                //Console.WriteLine($"ColumnAttributeNumber: {nombre4}");
+                //var nombre5 = reader.GetColumnSchema()[0].BaseColumnName;
+                //Console.WriteLine($"BaseColumnName: {nombre5}" + nombre5.ToString());
+                //var nombre6 = reader.GetColumnSchema()[0];
+                //Console.WriteLine($".GetColumnSchema()[0]; a secas: {nombre6}" + nombre6);
 
                 //// Creación del objeto GeoJSON
                 //var geoJson = new
