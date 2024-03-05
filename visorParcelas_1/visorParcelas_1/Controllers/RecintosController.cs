@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Npgsql;
-//using Newtonsoft.Json;
 
 namespace visorParcelas_1.Controllers
 {
@@ -24,7 +23,7 @@ namespace visorParcelas_1.Controllers
 
         //Código que hace que aparezca el controlador en pantalla
         [HttpGet("recinto/{provincia}/{municipio}/{agregado}/{zona}/{poligono}/{parcela}/{recinto}")]
-        public async void Get(int provincia = 28, int municipio = 85, int agregado = 0, int zona = 0, int poligono = 1, int parcela = 1, int recinto = 8)
+        public async Task<ActionResult<string>> Get(int provincia = 28, int municipio = 85, int agregado = 0, int zona = 0, int poligono = 1, int parcela = 1, int recinto = 8)
         {
 
             //Conexión con la base de datos
@@ -42,41 +41,17 @@ namespace visorParcelas_1.Controllers
 
             NpgsqlDataReader reader = command.ExecuteReader();
 
-            //try
-            //{
             if (reader.Read())
-
-                Console.WriteLine(reader.GetString(0));
-            //var altitud = reader.GetDouble(reader.GetOrdinal("altitud"));
-            //var pendiente_media = reader.GetDouble(reader.GetOrdinal("pendiente_media"));
-            //var longitude = reader.GetDouble(reader.GetOrdinal("geocentro_x"));
-            //var latitude = reader.GetDouble(reader.GetOrdinal("geocentro_y"));
-            //// Creación del objeto GeoJSON
-            //var geoJson = new
-            //{
-            //    type = "Feature",
-            //    geometry = new
-            //    {
-            //        type = "Point",
-            //        coordinates = new[] { longitude, latitude }
-            //    },
-            //    properties = new
-            //    {
-            //        provincia,
-            //        municipio,
-            //        agregado,
-            //        zona,
-            //        poligono,
-            //        parcela,
-            //        recinto,
-            //        altitud,
-            //        pendiente_media  // Cambia el nombre según tus necesidades
-            //    }
-            //};
-
-            //// Serialización del objeto GeoJSON
-            //var geoJsonString = JsonConvert.SerializeObject(geoJson);
-
+            {
+                //Console.WriteLine(reader.GetString(0));
+                //var geoJson = reader.GetStream(0);
+                //Console.WriteLine(geoJson);
+                // Serialización del objeto GeoJSON
+                var geoJsonString = JsonConvert.SerializeObject(reader.GetString(0));
+                Console.WriteLine(geoJsonString);
+                return geoJsonString;
+            }
+            return null;
         }
     }
 }
