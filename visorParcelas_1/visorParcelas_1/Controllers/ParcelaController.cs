@@ -34,7 +34,7 @@ namespace visorParcelas_1.Controllers
                 $"{agregado} AND zona = {zona} AND poligono = {poligono} AND parcela = {parcela} AND recinto = {recintos[i]}";
 
                 //Esperamos a que se ejecute el comando
-                await using NpgsqlDataReader reader = command.ExecuteReader();
+                NpgsqlDataReader reader = command.ExecuteReader();
 
                 if (reader.Read())
                 {
@@ -44,7 +44,19 @@ namespace visorParcelas_1.Controllers
                     string deserializedString = JsonConvert.DeserializeObject<string>(geoJsonString);
                     geoJson geoJson = JsonConvert.DeserializeObject<geoJson>(deserializedString);
 
+                    //Hasta que no se cierra el reader no se puede ejecutar otro comando
+                    reader.Close();
+
+                    command.CommandText = $"SELECT * FROM public.\"t$recinto\" WHERE provincia = {provincia} AND municipio = {municipio} AND agregado = " +
+                    $"{agregado} AND zona = {zona} AND poligono = {poligono} AND parcela = {parcela} AND recinto = {recintos[i]}";
+
+                    reader = command.ExecuteReader();
+
+                    setProperties(provincia, municipio, agregado, zona, poligono, parcela, recintos[i], reader, geoJson);
+
                     data.Add(geoJson);
+
+                    reader.Close();
                 }
             }
             return data;
@@ -71,6 +83,22 @@ namespace visorParcelas_1.Controllers
             recintoReader.Close();
 
             return N_recintos;
+        }
+
+        private static void setProperties(int provincia, int municipio, int agregado, int zona, int poligono, int parcela, int recinto, NpgsqlDataReader reader, geoJson geoJson)
+        {
+            if (reader.Read())
+            {
+                geoJson.provincia = provincia;
+                geoJson.municipio = municipio;
+                geoJson.agregado = agregado;
+                geoJson.zona = zona;
+                geoJson.recinto = recinto;
+                geoJson.polígono = poligono;
+                geoJson.parcela = parcela;
+                geoJson.altitud = reader.GetInt32(reader.GetOrdinal("altitud"));
+                geoJson.pendiente_media = reader.GetInt32(reader.GetOrdinal("pendiente_media"));
+            }
         }
     }
 }
