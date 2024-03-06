@@ -24,7 +24,7 @@ namespace visorParcelas_1.Controllers
 
             //Petición del número de recintos y de sus respetívos índices
             int[] recintos;
-            int N_recintos = getN_Recintos(provincia, municipio, agregado, zona, poligono, parcela,connection);
+            int N_recintos = getN_Recintos(provincia, municipio, agregado, zona, poligono, parcela, connection);
 
             //Creación del comando
             NpgsqlCommand command = connection.CreateCommand();
@@ -48,7 +48,7 @@ namespace visorParcelas_1.Controllers
             return null;
         }
 
-        private static int getN_Recintos(int provincia, int municipio, int agregado, int zona, int poligono, int parcela ,NpgsqlConnection connection, ref int[]recintos)
+        private static int getN_Recintos(int provincia, int municipio, int agregado, int zona, int poligono, int parcela ,NpgsqlConnection connection/*, ref int[]recintos*/)
         {
             NpgsqlCommand recintoCommand = connection.CreateCommand();
 
