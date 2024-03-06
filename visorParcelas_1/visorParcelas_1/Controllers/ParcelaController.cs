@@ -15,8 +15,9 @@ namespace visorParcelas_1.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<featureCollection>> Get(int provincia = 28, int municipio = 85, int agregado = 0, int zona = 0, int poligono = 1, int parcela = 1)
+        public async Task<ActionResult<List<geoJson>>> Get(int provincia = 28, int municipio = 85, int agregado = 0, int zona = 0, int poligono = 1, int parcela = 1)
         {
+            //Conexión a la base de datos
             var connectionString = "Host = 172.17.11.154;Username=postgres;Password=postgres;DataBase=DATOS_PRUEBA";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
 
@@ -29,8 +30,11 @@ namespace visorParcelas_1.Controllers
             //Creación del comando
             NpgsqlCommand command = connection.CreateCommand();
 
-            featureCollection collection = new featureCollection();
+            //featureCollection collection = new featureCollection();
 
+            List<geoJson> data = new List<geoJson>();
+
+            //Recorremos los recintos preguntando por su geoJson y lo añadimos a la lista
             for (int i = 0; i < recintos.Count; i++)
             {
                 command.CommandText = $"SELECT ST_AsGeoJSON(dn_geom) FROM public.\"t$recinto\" WHERE provincia = {provincia} AND municipio = {municipio} AND agregado = " +
@@ -46,11 +50,13 @@ namespace visorParcelas_1.Controllers
                     string deserializedString = JsonConvert.DeserializeObject<string>(geoJsonString);
                     geoJson geoJson = JsonConvert.DeserializeObject<geoJson>(deserializedString);
 
-                    collection.recintos.Add(geoJson);
+                    //collection.recintos.Add(geoJson);
+                    data.Add(geoJson);
                 }
             }
 
-            return collection;
+            //return collection;
+            return data;
         }
 
         private static int getN_Recintos(int provincia, int municipio, int agregado, int zona, int poligono, int parcela ,NpgsqlConnection connection, ref List<int>recintos)
