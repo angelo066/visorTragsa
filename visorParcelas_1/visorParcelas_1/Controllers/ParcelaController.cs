@@ -9,11 +9,6 @@ namespace visorParcelas_1.Controllers
     [Route("[controller]")]
     public class ParcelaController
     {
-        private readonly ILogger<ParcelaController> _logger;
-
-        public ParcelaController(ILogger<ParcelaController> logger) { _logger = logger; }
-
-
         [HttpGet]
         public async Task<ActionResult<List<geoJson>>> Get(int provincia = 28, int municipio = 85, int agregado = 0, int zona = 0, int poligono = 1, int parcela = 1)
         {
@@ -30,8 +25,6 @@ namespace visorParcelas_1.Controllers
             //Creación del comando
             NpgsqlCommand command = connection.CreateCommand();
 
-            //featureCollection collection = new featureCollection();
-
             List<geoJson> data = new List<geoJson>();
 
             //Recorremos los recintos preguntando por su geoJson y lo añadimos a la lista
@@ -40,6 +33,7 @@ namespace visorParcelas_1.Controllers
                 command.CommandText = $"SELECT ST_AsGeoJSON(dn_geom) FROM public.\"t$recinto\" WHERE provincia = {provincia} AND municipio = {municipio} AND agregado = " +
                 $"{agregado} AND zona = {zona} AND poligono = {poligono} AND parcela = {parcela} AND recinto = {recintos[i]}";
 
+                //Esperamos a que se ejecute el comando
                 await using NpgsqlDataReader reader = command.ExecuteReader();
 
                 if (reader.Read())
@@ -50,15 +44,13 @@ namespace visorParcelas_1.Controllers
                     string deserializedString = JsonConvert.DeserializeObject<string>(geoJsonString);
                     geoJson geoJson = JsonConvert.DeserializeObject<geoJson>(deserializedString);
 
-                    //collection.recintos.Add(geoJson);
                     data.Add(geoJson);
                 }
             }
-
-            //return collection;
             return data;
         }
 
+        //En este método obtengo el número de recintos que hay en la parcela, además de sus respectivos identificadores
         private static int getN_Recintos(int provincia, int municipio, int agregado, int zona, int poligono, int parcela ,NpgsqlConnection connection, ref List<int>recintos)
         {
             NpgsqlCommand recintoCommand = connection.CreateCommand();

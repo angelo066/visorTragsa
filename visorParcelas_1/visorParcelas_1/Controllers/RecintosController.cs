@@ -10,18 +10,6 @@ namespace visorParcelas_1.Controllers
     [Route("[controller]")]
     public class RecintosController : ControllerBase
     {
-        private readonly ILogger<RecintosController> _logger;
-
-
-        public RecintosController(ILogger<RecintosController> logger)
-        {
-            _logger = logger;
-        }
-
-        private void TestMethod()
-        {
-            Console.WriteLine("This is a test");
-        }
 
         //Código que hace que aparezca el controlador en pantalla
         [HttpGet]
