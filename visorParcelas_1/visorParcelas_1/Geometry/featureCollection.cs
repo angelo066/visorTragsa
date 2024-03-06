@@ -3,6 +3,11 @@ namespace visorParcelas_1.Geometry
 {
     public class featureCollection
     {
-        geoJson[] recintos;
+        public List<geoJson> recintos;
+
+        public featureCollection()
+        {
+            recintos = new List<geoJson>();
+        }
     }
 }
