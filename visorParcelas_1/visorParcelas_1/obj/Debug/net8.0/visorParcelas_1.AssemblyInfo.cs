@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("visorParcelas_1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+92cf59eb440ae46fe4b1d1f35397670b083d06a9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2be15802a146cf517c1f1eafef14033fba60fb13")]
 [assembly: System.Reflection.AssemblyProductAttribute("visorParcelas_1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("visorParcelas_1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

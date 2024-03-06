@@ -64,3 +64,4 @@ D:\Repos\visorTragsa\visorParcelas_1\visorParcelas_1\obj\Debug\net8.0\refint\vis
 D:\Repos\visorTragsa\visorParcelas_1\visorParcelas_1\obj\Debug\net8.0\visorParcelas_1.pdb
 D:\Repos\visorTragsa\visorParcelas_1\visorParcelas_1\obj\Debug\net8.0\visorParcelas_1.genruntimeconfig.cache
 D:\Repos\visorTragsa\visorParcelas_1\visorParcelas_1\obj\Debug\net8.0\ref\visorParcelas_1.dll
+D:\Repos\visorTragsa\visorParcelas_1\visorParcelas_1\bin\Debug\net8.0\Newtonsoft.Json.dll

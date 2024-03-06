@@ -2,51 +2,55 @@
   {
     "ContainingType": "visorParcelas_1.Controllers.RecintosController",
     "Method": "Get",
-    "RelativePath": "Recintos/{Provinvia}/{Municipio}/{Agregado}/{Zona}/{Pol\u00EDgono}/{Parcela}/{Recinto}",
+    "RelativePath": "Recintos/recinto/{provincia}/{municipio}/{agregado}/{zona}/{poligono}/{parcela}/{recinto}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Provinvia",
-        "Type": "",
+        "Name": "provincia",
+        "Type": "System.Int32",
         "IsRequired": true
       },
       {
-        "Name": "Municipio",
-        "Type": "",
+        "Name": "municipio",
+        "Type": "System.Int32",
         "IsRequired": true
       },
       {
-        "Name": "Agregado",
-        "Type": "",
+        "Name": "agregado",
+        "Type": "System.Int32",
         "IsRequired": true
       },
       {
-        "Name": "Zona",
-        "Type": "",
+        "Name": "zona",
+        "Type": "System.Int32",
         "IsRequired": true
       },
       {
-        "Name": "Pol\u00EDgono",
-        "Type": "",
+        "Name": "poligono",
+        "Type": "System.Int32",
         "IsRequired": true
       },
       {
-        "Name": "Parcela",
-        "Type": "",
+        "Name": "parcela",
+        "Type": "System.Int32",
         "IsRequired": true
       },
       {
-        "Name": "Recinto",
-        "Type": "",
+        "Name": "recinto",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Void",
-        "MediaTypes": [],
+        "Type": "visorParcelas_1.Geometry.geoJson",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
