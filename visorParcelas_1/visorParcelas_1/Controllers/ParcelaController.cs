@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Npgsql;
 using visorParcelas_1.Geometry;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace visorParcelas_1.Controllers
 {
@@ -10,7 +11,8 @@ namespace visorParcelas_1.Controllers
     public class ParcelaController
     {
         [HttpGet]
-        public async Task<ActionResult<List<geoJson>>> Get(int provincia = 28, int municipio = 85, int agregado = 0, int zona = 0, int poligono = 1, int parcela = 1)
+        //public async Task<ActionResult<List<geoJson>>> Get(int provincia = 28, int municipio = 85, int agregado = 0, int zona = 0, int poligono = 1, int parcela = 1)
+        public async Task<ActionResult<string>> Get(int provincia = 28, int municipio = 85, int agregado = 0, int zona = 0, int poligono = 1, int parcela = 1)
         {
             //Conexión a la base de datos
             var connectionString = "Host = 172.17.11.154;Username=postgres;Password=postgres;DataBase=DATOS_PRUEBA";
@@ -20,46 +22,64 @@ namespace visorParcelas_1.Controllers
 
             //Petición del número de recintos y de sus respetívos índices
             List<int> recintos = new List<int>();
-            int N_recintos = getN_Recintos(provincia, municipio, agregado, zona, poligono, parcela,connection,ref recintos);
+            //int N_recintos = getN_Recintos(provincia, municipio, agregado, zona, poligono, parcela,connection,ref recintos);
 
             //Creación del comando
             NpgsqlCommand command = connection.CreateCommand();
 
-            List<geoJson> data = new List<geoJson>();
+            //List<geoJson> data = new List<geoJson>();
 
-            //Recorremos los recintos preguntando por su geoJson y lo añadimos a la lista
-            for (int i = 0; i < recintos.Count; i++)
+            command.CommandText = $"SELECT json_build_object('type', 'FeatureCollection','features', json_agg(ST_AsGeoJSON(t.*)::json)) FROM public.\"t$recinto\" AS t WHERE provincia = {provincia} AND municipio = {municipio} AND agregado = " +
+                $"{agregado} AND zona = {zona} AND poligono = {poligono} AND parcela = {parcela}";
+
+            NpgsqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
             {
-                command.CommandText = $"SELECT ST_AsGeoJSON(dn_geom) FROM public.\"t$recinto\" WHERE provincia = {provincia} AND municipio = {municipio} AND agregado = " +
-                $"{agregado} AND zona = {zona} AND poligono = {poligono} AND parcela = {parcela} AND recinto = {recintos[i]}";
+                // Serialización del objeto GeoJSON
+                var geoJsonString = JsonConvert.SerializeObject(reader.GetString(0));
 
-                //Esperamos a que se ejecute el comando
-                NpgsqlDataReader reader = command.ExecuteReader();
+                string deserializedString = JsonConvert.DeserializeObject<string>(geoJsonString);
+                geoJson geoJson = JsonConvert.DeserializeObject<geoJson>(deserializedString);
 
-                if (reader.Read())
-                {
-                    // Serialización del objeto GeoJSON
-                    var geoJsonString = JsonConvert.SerializeObject(reader.GetString(0));
+                reader.Close();
 
-                    string deserializedString = JsonConvert.DeserializeObject<string>(geoJsonString);
-                    geoJson geoJson = JsonConvert.DeserializeObject<geoJson>(deserializedString);
-
-                    //Hasta que no se cierra el reader no se puede ejecutar otro comando
-                    reader.Close();
-
-                    command.CommandText = $"SELECT * FROM public.\"t$recinto\" WHERE provincia = {provincia} AND municipio = {municipio} AND agregado = " +
-                    $"{agregado} AND zona = {zona} AND poligono = {poligono} AND parcela = {parcela} AND recinto = {recintos[i]}";
-
-                    reader = command.ExecuteReader();
-
-                    setProperties(provincia, municipio, agregado, zona, poligono, parcela, recintos[i], reader, geoJson);
-
-                    data.Add(geoJson);
-
-                    reader.Close();
-                }
+                return deserializedString;
             }
-            return data;
+
+            return null;
+            //Recorremos los recintos preguntando por su geoJson y lo añadimos a la lista
+            //for (int i = 0; i < recintos.Count; i++)
+            //{
+            //    command.CommandText = $"SELECT json_build_object('type', 'FeatureCollection','features', json_agg(ST_AsGeoJSON(t.*)::json)) FROM public.\"t$recinto\" AS t WHERE provincia = {provincia} AND municipio = {municipio} AND agregado = " +
+            //    $"{agregado} AND zona = {zona} AND poligono = {poligono} AND parcela = {parcela} AND recinto = {recintos[i]}";
+
+            //    //Esperamos a que se ejecute el comando
+            //    NpgsqlDataReader reader = command.ExecuteReader();
+
+            //    if (reader.Read())
+            //    {
+            //        // Serialización del objeto GeoJSON
+            //        var geoJsonString = JsonConvert.SerializeObject(reader.GetString(0));
+
+            //        string deserializedString = JsonConvert.DeserializeObject<string>(geoJsonString);
+            //        geoJson geoJson = JsonConvert.DeserializeObject<geoJson>(deserializedString);
+
+            //        //Hasta que no se cierra el reader no se puede ejecutar otro comando
+            //        reader.Close();
+
+            //        command.CommandText = $"SELECT * FROM public.\"t$recinto\" WHERE provincia = {provincia} AND municipio = {municipio} AND agregado = " +
+            //        $"{agregado} AND zona = {zona} AND poligono = {poligono} AND parcela = {parcela} AND recinto = {recintos[i]}";
+
+            //        reader = command.ExecuteReader();
+
+            //        setProperties(provincia, municipio, agregado, zona, poligono, parcela, recintos[i], reader, geoJson);
+
+            //        data.Add(geoJson);
+
+            //        reader.Close();
+            //    }
+            //}
         }
 
         //En este método obtengo el número de recintos que hay en la parcela, además de sus respectivos identificadores
