@@ -42,6 +42,7 @@ namespace visorParcelas_1.Controllers
                 string deserializedString = JsonConvert.DeserializeObject<string>(geoJsonString);
                 geoJson geoJson = JsonConvert.DeserializeObject<geoJson>(deserializedString);
 
+
                 reader.Close();
 
                 return deserializedString;
