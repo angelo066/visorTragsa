@@ -37,11 +37,6 @@ namespace visorParcelas_1.Controllers
                 Feature geoJson = JsonConvert.DeserializeObject<Feature>(deserializedString);
                 reader.Close();
 
-                command.CommandText = $"SELECT * FROM public.\"t$recinto\" WHERE provincia = {provincia} AND municipio = {municipio} AND agregado = " +
-                    $"{agregado} AND zona = {zona} AND poligono = {poligono} AND parcela = {parcela} AND recinto = {recinto}";
-
-                reader.Close();
-
                 return geoJson;
             }
 

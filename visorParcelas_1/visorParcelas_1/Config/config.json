@@ -1,0 +1,5 @@
+{
+
+   "connectionString": "Host=172.17.11.154;Username=postgres;Password=postgres;DataBase=DATOS_PRUEBA",
+
+}
