@@ -13,7 +13,14 @@ namespace visorParcelas_1.Controllers
         public async Task<ActionResult<Root>> Get(int provincia = 28, int municipio = 85, int agregado = 0, int zona = 0, int poligono = 1, int parcela = 1)
         {
             //Conexión a la base de datos
-            var connectionString = "Host = 172.17.11.154;Username=postgres;Password=postgres;DataBase=DATOS_PRUEBA";
+            string connectionString = "";
+            using (StreamReader readerJson = new StreamReader("./Config/config.json"))
+            {
+                string prueba = readerJson.ReadToEnd();
+                Connection items = JsonConvert.DeserializeObject<Connection>(prueba);
+                connectionString = "Host=" + items.Host.ToString() + ";Username=" + items.Username.ToString() +
+                    ";Password=" + items.Password.ToString() + ";DataBase=" + items.DataBase.ToString();
+            }
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
 
             NpgsqlConnection connection = dataSource.OpenConnection();
