@@ -21,7 +21,6 @@ namespace visorParcelas_1.Controllers
 
             NpgsqlConnection connection = dataSource.OpenConnection();
 
-            //Creación del comando
             NpgsqlCommand command = connection.CreateCommand();
 
             command.CommandText = $"SELECT ST_AsGeoJSON(t.*) FROM public.\"t$recinto\" AS t WHERE provincia = {provincia} AND municipio = {municipio} AND agregado = " +
@@ -41,9 +40,8 @@ namespace visorParcelas_1.Controllers
                 command.CommandText = $"SELECT * FROM public.\"t$recinto\" WHERE provincia = {provincia} AND municipio = {municipio} AND agregado = " +
                     $"{agregado} AND zona = {zona} AND poligono = {poligono} AND parcela = {parcela} AND recinto = {recinto}";
 
-                reader = command.ExecuteReader();
+                reader.Close();
 
-                //setProperties(provincia, municipio, agregado, zona, poligono, parcela, recinto, reader, geoJson);
                 return geoJson;
             }
 
