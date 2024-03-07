@@ -13,7 +13,7 @@ namespace visorParcelas_1.Controllers
 
         //Código que hace que aparezca el controlador en pantalla
         [HttpGet]
-        public async Task<ActionResult<geoJson>> Get(int provincia = 28, int municipio = 85, int agregado = 0, int zona = 0, int poligono = 1, int parcela = 1, int recinto = 8)
+        public async Task<ActionResult<Root>> Get(int provincia = 28, int municipio = 85, int agregado = 0, int zona = 0, int poligono = 1, int parcela = 1, int recinto = 8)
         {
 
             //Conexión con la base de datos
@@ -37,7 +37,7 @@ namespace visorParcelas_1.Controllers
                 var geoJsonString = JsonConvert.SerializeObject(reader.GetString(0));
 
                 string deserializedString = JsonConvert.DeserializeObject<string>(geoJsonString);
-                geoJson geoJson = JsonConvert.DeserializeObject<geoJson>(deserializedString);
+                Root geoJson = JsonConvert.DeserializeObject<Root>(deserializedString);
                 reader.Close();
 
                 command.CommandText = $"SELECT * FROM public.\"t$recinto\" WHERE provincia = {provincia} AND municipio = {municipio} AND agregado = " +
@@ -45,27 +45,27 @@ namespace visorParcelas_1.Controllers
 
                 reader = command.ExecuteReader();
 
-                setProperties(provincia, municipio, agregado, zona, poligono, parcela, recinto, reader, geoJson);
+                //setProperties(provincia, municipio, agregado, zona, poligono, parcela, recinto, reader, geoJson);
                 return geoJson;
             }
 
             return null;
         }
 
-        private static void setProperties(int provincia, int municipio, int agregado, int zona, int poligono, int parcela, int recinto, NpgsqlDataReader reader, geoJson geoJson)
-        {
-            if (reader.Read())
-            {
-                geoJson.provincia = provincia;
-                geoJson.municipio = municipio;
-                geoJson.agregado = agregado;
-                geoJson.zona = zona;
-                geoJson.recinto = recinto;
-                geoJson.polígono = poligono;
-                geoJson.parcela = parcela;
-                geoJson.altitud = reader.GetInt32(reader.GetOrdinal("altitud"));
-                geoJson.pendiente_media = reader.GetInt32(reader.GetOrdinal("pendiente_media"));
-            }
-        }
+        //private static void setProperties(int provincia, int municipio, int agregado, int zona, int poligono, int parcela, int recinto, NpgsqlDataReader reader, geoJson geoJson)
+        //{
+        //    if (reader.Read())
+        //    {
+        //        geoJson.provincia = provincia;
+        //        geoJson.municipio = municipio;
+        //        geoJson.agregado = agregado;
+        //        geoJson.zona = zona;
+        //        geoJson.recinto = recinto;
+        //        geoJson.polígono = poligono;
+        //        geoJson.parcela = parcela;
+        //        geoJson.altitud = reader.GetInt32(reader.GetOrdinal("altitud"));
+        //        geoJson.pendiente_media = reader.GetInt32(reader.GetOrdinal("pendiente_media"));
+        //    }
+        //}
     }
 }

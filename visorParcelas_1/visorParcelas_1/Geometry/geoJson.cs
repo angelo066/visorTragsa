@@ -15,9 +15,14 @@
     public class Crs
     {
         public string? type { get; set; }
-        public Properties? properties { get; set; }
+        public PropertiesGeometry? properties { get; set; }
     }
-   
+
+    public class PropertiesGeometry
+    {
+        public string name { get; set; }
+    }
+
     public class Geometry
     {
         public string type { get; set; }
@@ -27,7 +32,6 @@
 
     public class Properties
     {
-        public string name { get; set; }
         public int provincia { get; set; }
         public int municipio { get; set; }
         public int agregado { get; set; }
