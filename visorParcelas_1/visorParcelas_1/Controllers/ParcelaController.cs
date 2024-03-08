@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Npgsql;
+using visorParcelas_1.Config;
 using visorParcelas_1.Geometry;
 
 namespace visorParcelas_1.Controllers
@@ -14,14 +15,7 @@ namespace visorParcelas_1.Controllers
         public async Task<ActionResult<Root>> Get(int provincia = 28, int municipio = 85, int agregado = 0, int zona = 0, int poligono = 1, int parcela = 1)
         {
             //Conexión a la base de datos
-            string connectionString = "";
-            using (StreamReader readerJson = new StreamReader("./Config/config.json"))
-            {
-                string prueba = readerJson.ReadToEnd();
-                Connection items = JsonConvert.DeserializeObject<Connection>(prueba);
-                connectionString = "Host=" + items.Host.ToString() + ";Username=" + items.Username.ToString() +
-                    ";Password=" + items.Password.ToString() + ";DataBase=" + items.DataBase.ToString();
-            }
+            string connectionString = Information_Singleton.getInstance().getConnectionString();
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
 
             NpgsqlConnection connection = dataSource.OpenConnection();
@@ -40,6 +34,7 @@ namespace visorParcelas_1.Controllers
                 Root geoJson = JsonConvert.DeserializeObject<Root>(deserializedString);
 
                 reader.Close();
+                connection.Close();
 
                 return geoJson;
             }

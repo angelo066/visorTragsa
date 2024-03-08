@@ -1,4 +1,14 @@
+using Newtonsoft.Json;
+using visorParcelas_1.Config;
+
 var builder = WebApplication.CreateBuilder(args);
+
+using (StreamReader readerJson = new StreamReader("./Config/config.json"))
+{
+    string prueba = readerJson.ReadToEnd();
+    Connection items = JsonConvert.DeserializeObject<Connection>(prueba);
+    Information_Singleton.getInstance().setConnection(items);
+}
 
 // Add services to the container.
 
