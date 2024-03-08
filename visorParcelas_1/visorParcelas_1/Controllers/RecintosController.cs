@@ -12,7 +12,7 @@ namespace visorParcelas_1.Controllers
     {
 
         //Código que hace que aparezca el controlador en pantalla
-        [HttpGet]
+        [HttpGet("{provincia}/{municipio}/{agregado}/{zona}/{poligono}/{parcela}/{recinto}")]
         public async Task<ActionResult<Feature>> Get(int provincia = 28, int municipio = 85, int agregado = 0, int zona = 0, int poligono = 1, int parcela = 1, int recinto = 8)
         {
             //Conexión con la base de datos

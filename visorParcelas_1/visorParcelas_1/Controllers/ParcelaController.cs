@@ -9,7 +9,8 @@ namespace visorParcelas_1.Controllers
     [Route("[controller]")]
     public class ParcelaController
     {
-        [HttpGet]
+
+        [HttpGet("{provincia}/{municipio}/{agregado}/{zona}/{poligono}/{parcela}")]
         public async Task<ActionResult<Root>> Get(int provincia = 28, int municipio = 85, int agregado = 0, int zona = 0, int poligono = 1, int parcela = 1)
         {
             //Conexión a la base de datos
