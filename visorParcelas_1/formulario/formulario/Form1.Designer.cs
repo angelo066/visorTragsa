@@ -97,7 +97,8 @@
             this.buscarParcela.TabIndex = 6;
             this.buscarParcela.Text = "Buscar";
             this.buscarParcela.UseVisualStyleBackColor = true;
-            this.buscarParcela.Click += new System.EventHandler(this.buscarParcela_Click);
+            this.buscarParcela.Visible = false;
+            this.buscarParcela.Click += new System.EventHandler(this.button1_Click);
             // 
             // textLabel
             // 
@@ -125,6 +126,7 @@
             this.municipioLabel.Size = new System.Drawing.Size(52, 13);
             this.municipioLabel.TabIndex = 9;
             this.municipioLabel.Text = "Municipio";
+            this.municipioLabel.Visible = false;
             this.municipioLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // agregadoLabel
@@ -135,6 +137,7 @@
             this.agregadoLabel.Size = new System.Drawing.Size(53, 13);
             this.agregadoLabel.TabIndex = 10;
             this.agregadoLabel.Text = "Agregado";
+            this.agregadoLabel.Visible = false;
             // 
             // zonaLabel
             // 
@@ -144,6 +147,7 @@
             this.zonaLabel.Size = new System.Drawing.Size(32, 13);
             this.zonaLabel.TabIndex = 11;
             this.zonaLabel.Text = "Zona";
+            this.zonaLabel.Visible = false;
             // 
             // poligonoLabel
             // 
@@ -153,6 +157,7 @@
             this.poligonoLabel.Size = new System.Drawing.Size(50, 13);
             this.poligonoLabel.TabIndex = 12;
             this.poligonoLabel.Text = "Polígono";
+            this.poligonoLabel.Visible = false;
             // 
             // parcelaLabel
             // 
@@ -162,6 +167,7 @@
             this.parcelaLabel.Size = new System.Drawing.Size(43, 13);
             this.parcelaLabel.TabIndex = 13;
             this.parcelaLabel.Text = "Parcela";
+            this.parcelaLabel.Visible = false;
             // 
             // provinciaText
             // 

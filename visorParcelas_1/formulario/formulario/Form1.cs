@@ -36,30 +36,35 @@ namespace WindowsFormsApp1
         private void provinciaText_TextChanged(object sender, EventArgs e)
         {
             municipioText.Visible = true;
+            municipioLabel.Visible = true;
         }
         private void municipioText_TextChanged(object sender, EventArgs e)
         {
             agregadoText.Visible = true;
+            agregadoLabel.Visible = true;
         }
 
         private void agregadoText_TextChanged(object sender, EventArgs e)
         {
             zonaText.Visible = true;
+            zonaLabel.Visible = true;
         }
 
         private void zonaText_TextChanged(object sender, EventArgs e)
         {
             poligonoText.Visible = true;
+            poligonoLabel.Visible = true;
         }
 
         private void poligonoText_TextChanged(object sender, EventArgs e)
         {
             parcelaText.Visible = true;
+            parcelaLabel.Visible = true;
         }
 
         private void parcelaText_TextChanged(object sender, EventArgs e)
         {
-
+            buscarParcela.Visible = true;
         }
 
     }
