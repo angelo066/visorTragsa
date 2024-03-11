@@ -13,7 +13,14 @@ namespace prueba
         {
             ParcelaController controller = new ParcelaController();
 
-            //controller.Get();
+            var x = controller.Get();
+            //resultLabel.Text = x.ToString();
+            resultLabel.Text = x.Result.Value.ToString();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

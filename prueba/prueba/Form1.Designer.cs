@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             vomito = new Button();
+            resultLabel = new Label();
             SuspendLayout();
             // 
             // vomito
@@ -41,20 +42,31 @@
             vomito.UseVisualStyleBackColor = true;
             vomito.Click += vomito_Click;
             // 
+            // resultLabel
+            // 
+            resultLabel.AutoSize = true;
+            resultLabel.Location = new Point(750, 117);
+            resultLabel.Name = "resultLabel";
+            resultLabel.Size = new Size(0, 15);
+            resultLabel.TabIndex = 1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1440, 633);
+            Controls.Add(resultLabel);
             Controls.Add(vomito);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button vomito;
-
+        private Label resultLabel;
     }
 }
