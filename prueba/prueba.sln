@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "formulario", "formulario\formulario.csproj", "{7D6395A7-2FB5-4908-97D1-5DE8042C386F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "prueba", "prueba\prueba.csproj", "{2E671A02-57DA-46E3-A557-072773D2A2E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7D6395A7-2FB5-4908-97D1-5DE8042C386F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D6395A7-2FB5-4908-97D1-5DE8042C386F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D6395A7-2FB5-4908-97D1-5DE8042C386F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D6395A7-2FB5-4908-97D1-5DE8042C386F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E671A02-57DA-46E3-A557-072773D2A2E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E671A02-57DA-46E3-A557-072773D2A2E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E671A02-57DA-46E3-A557-072773D2A2E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E671A02-57DA-46E3-A557-072773D2A2E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9A8610DF-FBCC-427E-A66F-330627AFF584}
+		SolutionGuid = {16A2B0C5-1F7D-43E8-8AB2-AD98EB32647E}
 	EndGlobalSection
 EndGlobal
