@@ -1,4 +1,7 @@
+using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using visorParcelas_1.Controllers;
+using visorParcelas_1.Geometry;
 
 namespace prueba
 {
@@ -29,6 +32,7 @@ namespace prueba
             {
                 var geoJsonString = await response.Content.ReadAsStringAsync();
                 resultLabel.Text = geoJsonString.ToString();
+                Root root = JsonConvert.DeserializeObject<Root>(geoJsonString);
                 // Procesa el geojson según tus necesidades
             }
         }
