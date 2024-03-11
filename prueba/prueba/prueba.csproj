@@ -9,8 +9,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.OpenApi">
+      <HintPath>..\..\visorParcelas_1\visorParcelas_1\bin\Debug\net8.0\Microsoft.OpenApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\visorParcelas_1\visorParcelas_1\bin\Debug\net8.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql">
+      <HintPath>..\..\visorParcelas_1\visorParcelas_1\bin\Debug\net8.0\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="Swashbuckle.AspNetCore.Swagger">
+      <HintPath>..\..\visorParcelas_1\visorParcelas_1\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll</HintPath>
+    </Reference>
+    <Reference Include="Swashbuckle.AspNetCore.SwaggerGen">
+      <HintPath>..\..\visorParcelas_1\visorParcelas_1\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll</HintPath>
+    </Reference>
+    <Reference Include="Swashbuckle.AspNetCore.SwaggerUI">
+      <HintPath>..\..\visorParcelas_1\visorParcelas_1\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll</HintPath>
+    </Reference>
     <Reference Include="visorParcelas_1">
-      <HintPath>..\..\visorTragsa\visorParcelas_1\visorParcelas_1\bin\Debug\net8.0\visorParcelas_1.dll</HintPath>
+      <HintPath>..\..\visorParcelas_1\visorParcelas_1\bin\Debug\net8.0\visorParcelas_1.dll</HintPath>
     </Reference>
   </ItemGroup>
 
