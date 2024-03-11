@@ -13,7 +13,7 @@ namespace prueba
         {
             ParcelaController controller = new ParcelaController();
 
-            controller.Get();
+            //controller.Get();
         }
     }
 }
