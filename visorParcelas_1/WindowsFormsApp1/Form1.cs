@@ -17,10 +17,6 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -36,5 +32,37 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void provinciaText_TextChanged(object sender, EventArgs e)
+        {
+            municipioText.Visible = true;
+        }
+        private void municipioText_TextChanged(object sender, EventArgs e)
+        {
+            agregadoText.Visible = true;
+        }
+
+        private void agregadoText_TextChanged(object sender, EventArgs e)
+        {
+            zonaText.Visible = true;
+        }
+
+        private void zonaText_TextChanged(object sender, EventArgs e)
+        {
+
+            poligonoText.Visible = true;
+        }
+
+        private void poligonoText_TextChanged(object sender, EventArgs e)
+        {
+
+            parcelaText.Visible = true;
+        }
+
+        private void parcelaText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

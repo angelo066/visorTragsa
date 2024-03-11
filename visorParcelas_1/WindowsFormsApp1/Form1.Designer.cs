@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.provinciaText = new System.Windows.Forms.TextBox();
             this.municipioText = new System.Windows.Forms.TextBox();
             this.agregadoText = new System.Windows.Forms.TextBox();
             this.zonaText = new System.Windows.Forms.TextBox();
@@ -42,15 +41,8 @@
             this.zonaLabel = new System.Windows.Forms.Label();
             this.poligonoLabel = new System.Windows.Forms.Label();
             this.parcelaLabel = new System.Windows.Forms.Label();
+            this.provinciaText = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // provinciaText
-            // 
-            this.provinciaText.Location = new System.Drawing.Point(12, 28);
-            this.provinciaText.Name = "provinciaText";
-            this.provinciaText.Size = new System.Drawing.Size(192, 20);
-            this.provinciaText.TabIndex = 0;
-            this.provinciaText.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // municipioText
             // 
@@ -58,6 +50,8 @@
             this.municipioText.Name = "municipioText";
             this.municipioText.Size = new System.Drawing.Size(192, 20);
             this.municipioText.TabIndex = 1;
+            this.municipioText.Visible = false;
+            this.municipioText.TextChanged += new System.EventHandler(this.municipioText_TextChanged);
             // 
             // agregadoText
             // 
@@ -65,6 +59,8 @@
             this.agregadoText.Name = "agregadoText";
             this.agregadoText.Size = new System.Drawing.Size(192, 20);
             this.agregadoText.TabIndex = 2;
+            this.agregadoText.Visible = false;
+            this.agregadoText.TextChanged += new System.EventHandler(this.agregadoText_TextChanged);
             // 
             // zonaText
             // 
@@ -72,6 +68,8 @@
             this.zonaText.Name = "zonaText";
             this.zonaText.Size = new System.Drawing.Size(192, 20);
             this.zonaText.TabIndex = 3;
+            this.zonaText.Visible = false;
+            this.zonaText.TextChanged += new System.EventHandler(this.zonaText_TextChanged);
             // 
             // poligonoText
             // 
@@ -79,6 +77,8 @@
             this.poligonoText.Name = "poligonoText";
             this.poligonoText.Size = new System.Drawing.Size(192, 20);
             this.poligonoText.TabIndex = 4;
+            this.poligonoText.Visible = false;
+            this.poligonoText.TextChanged += new System.EventHandler(this.poligonoText_TextChanged);
             // 
             // parcelaText
             // 
@@ -86,6 +86,8 @@
             this.parcelaText.Name = "parcelaText";
             this.parcelaText.Size = new System.Drawing.Size(192, 20);
             this.parcelaText.TabIndex = 5;
+            this.parcelaText.Visible = false;
+            this.parcelaText.TextChanged += new System.EventHandler(this.parcelaText_TextChanged);
             // 
             // buscarParcela
             // 
@@ -161,11 +163,20 @@
             this.parcelaLabel.TabIndex = 13;
             this.parcelaLabel.Text = "Parcela";
             // 
+            // provinciaText
+            // 
+            this.provinciaText.Location = new System.Drawing.Point(12, 29);
+            this.provinciaText.Name = "provinciaText";
+            this.provinciaText.Size = new System.Drawing.Size(192, 20);
+            this.provinciaText.TabIndex = 14;
+            this.provinciaText.TextChanged += new System.EventHandler(this.provinciaText_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1085, 646);
+            this.Controls.Add(this.provinciaText);
             this.Controls.Add(this.parcelaLabel);
             this.Controls.Add(this.poligonoLabel);
             this.Controls.Add(this.zonaLabel);
@@ -179,7 +190,6 @@
             this.Controls.Add(this.zonaText);
             this.Controls.Add(this.agregadoText);
             this.Controls.Add(this.municipioText);
-            this.Controls.Add(this.provinciaText);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -188,8 +198,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox provinciaText;
         private System.Windows.Forms.TextBox municipioText;
         private System.Windows.Forms.TextBox agregadoText;
         private System.Windows.Forms.TextBox zonaText;
@@ -203,6 +211,7 @@
         private System.Windows.Forms.Label zonaLabel;
         private System.Windows.Forms.Label poligonoLabel;
         private System.Windows.Forms.Label parcelaLabel;
+        private System.Windows.Forms.TextBox provinciaText;
     }
 }
 
