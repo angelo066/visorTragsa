@@ -38,7 +38,7 @@
             vomito.Name = "vomito";
             vomito.Size = new Size(75, 23);
             vomito.TabIndex = 0;
-            vomito.Text = "Suciedad";
+            vomito.Text = "Boton";
             vomito.UseVisualStyleBackColor = true;
             vomito.Click += vomito_Click;
             // 
