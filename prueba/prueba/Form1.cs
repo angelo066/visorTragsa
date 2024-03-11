@@ -11,16 +11,26 @@ namespace prueba
 
         private void vomito_Click(object sender, EventArgs e)
         {
-            ParcelaController controller = new ParcelaController();
-
-            var x = controller.Get();
-            //resultLabel.Text = x.ToString();
-            resultLabel.Text = x.Result.Value.ToString();
+            lolAsync();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        async Task lolAsync()
+        {
+            var url = "https://localhost:7266/Parcela/28/85/0/0/1/1"; // Reemplaza con la URL correcta
+            var httpClient = new HttpClient();
+            var response = await httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var geoJsonString = await response.Content.ReadAsStringAsync();
+                resultLabel.Text = geoJsonString.ToString();
+                // Procesa el geojson según tus necesidades
+            }
         }
     }
 }
