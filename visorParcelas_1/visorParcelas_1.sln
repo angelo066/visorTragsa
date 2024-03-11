@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "visorParcelas_1", "visorParcelas_1\visorParcelas_1.csproj", "{45BC787F-1F6C-481A-B830-A87F2411B49A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formulario", "WindowsFormsApp1\Formulario.csproj", "{17D7DB39-929B-478D-B491-0E65D44323A9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{45BC787F-1F6C-481A-B830-A87F2411B49A} = {45BC787F-1F6C-481A-B830-A87F2411B49A}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
