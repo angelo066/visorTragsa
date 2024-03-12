@@ -1,5 +1,6 @@
 ﻿
 using Newtonsoft.Json;
+using System.ComponentModel;
 using visorParcelas_1.Geometry;
 
 namespace prueba
@@ -20,8 +21,6 @@ namespace prueba
 
         private void button1_Click(object sender, EventArgs e)
         {
-            resultLabel.Text = "HelloWorld: " + provinciaText.Text + ", " + municipioText.Text + ", " + agregadoText.Text + ", " +
-                                                zonaText.Text + ", " + poligonoText.Text + ", " + parcelaText.Text + ".";
 
             callAsync();
         }
@@ -73,6 +72,28 @@ namespace prueba
                 var geoJsonString = await response.Content.ReadAsStringAsync();
                 resultLabel.Text = geoJsonString.Length.ToString();
                 Root root = JsonConvert.DeserializeObject<Root>(geoJsonString);
+
+
+                //dataGridView1.DataSource = root.features;
+
+                var data = root.features.Select(f => new
+                {
+                    Provincia = f.properties.provincia,
+                    Municipio = f.properties.municipio,
+                    Agregado = f.properties.agregado,
+                    Zona = f.properties.zona,
+                    Poligono = f.properties.poligono,
+                    Parcela = f.properties.parcela,
+                    Recinto = f.properties.recinto,
+                    Altitud = f.properties.altitud,
+                    PendienteMedia = f.properties.pendiente_media,
+                    Coordinates = string.Join(", ", f.geometry.coordinates.SelectMany(level1 => level1.SelectMany(level2 => level2))),
+                    GeometryType = f.geometry.type,
+                    CrsType = f.geometry.crs?.type,
+                    CrsName = f.geometry.crs?.properties?.name
+                }).ToList<object>();  // Añadí .ToList<object>() para especificar el tipo de lista.
+
+                dataGridView1.DataSource = new BindingList<object>(data);
             }
         }
 
