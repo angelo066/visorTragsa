@@ -1,4 +1,7 @@
 ﻿
+using Newtonsoft.Json;
+using visorParcelas_1.Geometry;
+
 namespace prueba
 {
     public partial class Form1 : Form
@@ -69,8 +72,13 @@ namespace prueba
             {
                 var geoJsonString = await response.Content.ReadAsStringAsync();
                 resultLabel.Text = geoJsonString.Length.ToString();
-                //Root root = JsonConvert.DeserializeObject<Root>(geoJsonString);
+                Root root = JsonConvert.DeserializeObject<Root>(geoJsonString);
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
