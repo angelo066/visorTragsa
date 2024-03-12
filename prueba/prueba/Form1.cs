@@ -94,12 +94,28 @@ namespace prueba
                 }).ToList<object>();  // Añadí .ToList<object>() para especificar el tipo de lista.
 
                 dataGridView1.DataSource = new BindingList<object>(data);
+
+                dataGridView1.AllowUserToAddRows = false;
+
             }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            Console.WriteLine("Homer");
+        }
 
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Verifica si se hizo clic en la última fila
+            if (e.RowIndex == dataGridView1.Rows.Count - 1)
+            {
+                // Evita acciones en la última fila
+                return;
+            }
+
+            // Acciones específicas al hacer clic en una celda válida
+            // Puedes acceder a la fila y sus valores usando dataGridView1.Rows[e.RowIndex]
         }
     }
 }
