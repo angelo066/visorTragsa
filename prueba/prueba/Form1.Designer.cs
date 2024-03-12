@@ -28,186 +28,213 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.municipioText = new System.Windows.Forms.TextBox();
-            this.agregadoText = new System.Windows.Forms.TextBox();
-            this.zonaText = new System.Windows.Forms.TextBox();
-            this.poligonoText = new System.Windows.Forms.TextBox();
-            this.parcelaText = new System.Windows.Forms.TextBox();
-            this.buscarParcela = new System.Windows.Forms.Button();
-            this.textLabel = new System.Windows.Forms.Label();
-            this.provinciaLabel = new System.Windows.Forms.Label();
-            this.municipioLabel = new System.Windows.Forms.Label();
-            this.agregadoLabel = new System.Windows.Forms.Label();
-            this.zonaLabel = new System.Windows.Forms.Label();
-            this.poligonoLabel = new System.Windows.Forms.Label();
-            this.parcelaLabel = new System.Windows.Forms.Label();
-            this.provinciaText = new System.Windows.Forms.TextBox();
-            this.resultLabel = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            municipioText = new TextBox();
+            agregadoText = new TextBox();
+            zonaText = new TextBox();
+            poligonoText = new TextBox();
+            parcelaText = new TextBox();
+            buscarParcela = new Button();
+            textLabel = new Label();
+            provinciaLabel = new Label();
+            municipioLabel = new Label();
+            agregadoLabel = new Label();
+            zonaLabel = new Label();
+            poligonoLabel = new Label();
+            parcelaLabel = new Label();
+            provinciaText = new TextBox();
+            resultLabel = new Label();
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SuspendLayout();
             // 
             // municipioText
             // 
-            this.municipioText.Location = new System.Drawing.Point(12, 67);
-            this.municipioText.Name = "municipioText";
-            this.municipioText.Size = new System.Drawing.Size(192, 20);
-            this.municipioText.TabIndex = 1;
-            this.municipioText.Visible = false;
-            this.municipioText.TextChanged += new System.EventHandler(this.municipioText_TextChanged);
+            municipioText.Location = new Point(14, 77);
+            municipioText.Margin = new Padding(4, 3, 4, 3);
+            municipioText.Name = "municipioText";
+            municipioText.Size = new Size(223, 23);
+            municipioText.TabIndex = 1;
+            municipioText.Visible = false;
+            municipioText.TextChanged += municipioText_TextChanged;
             // 
             // agregadoText
             // 
-            this.agregadoText.Location = new System.Drawing.Point(12, 110);
-            this.agregadoText.Name = "agregadoText";
-            this.agregadoText.Size = new System.Drawing.Size(192, 20);
-            this.agregadoText.TabIndex = 2;
-            this.agregadoText.Visible = false;
-            this.agregadoText.TextChanged += new System.EventHandler(this.agregadoText_TextChanged);
+            agregadoText.Location = new Point(14, 127);
+            agregadoText.Margin = new Padding(4, 3, 4, 3);
+            agregadoText.Name = "agregadoText";
+            agregadoText.Size = new Size(223, 23);
+            agregadoText.TabIndex = 2;
+            agregadoText.Visible = false;
+            agregadoText.TextChanged += agregadoText_TextChanged;
             // 
             // zonaText
             // 
-            this.zonaText.Location = new System.Drawing.Point(12, 153);
-            this.zonaText.Name = "zonaText";
-            this.zonaText.Size = new System.Drawing.Size(192, 20);
-            this.zonaText.TabIndex = 3;
-            this.zonaText.Visible = false;
-            this.zonaText.TextChanged += new System.EventHandler(this.zonaText_TextChanged);
+            zonaText.Location = new Point(14, 177);
+            zonaText.Margin = new Padding(4, 3, 4, 3);
+            zonaText.Name = "zonaText";
+            zonaText.Size = new Size(223, 23);
+            zonaText.TabIndex = 3;
+            zonaText.Visible = false;
+            zonaText.TextChanged += zonaText_TextChanged;
             // 
             // poligonoText
             // 
-            this.poligonoText.Location = new System.Drawing.Point(12, 196);
-            this.poligonoText.Name = "poligonoText";
-            this.poligonoText.Size = new System.Drawing.Size(192, 20);
-            this.poligonoText.TabIndex = 4;
-            this.poligonoText.Visible = false;
-            this.poligonoText.TextChanged += new System.EventHandler(this.poligonoText_TextChanged);
+            poligonoText.Location = new Point(14, 226);
+            poligonoText.Margin = new Padding(4, 3, 4, 3);
+            poligonoText.Name = "poligonoText";
+            poligonoText.Size = new Size(223, 23);
+            poligonoText.TabIndex = 4;
+            poligonoText.Visible = false;
+            poligonoText.TextChanged += poligonoText_TextChanged;
             // 
             // parcelaText
             // 
-            this.parcelaText.Location = new System.Drawing.Point(12, 239);
-            this.parcelaText.Name = "parcelaText";
-            this.parcelaText.Size = new System.Drawing.Size(192, 20);
-            this.parcelaText.TabIndex = 5;
-            this.parcelaText.Visible = false;
-            this.parcelaText.TextChanged += new System.EventHandler(this.parcelaText_TextChanged);
+            parcelaText.Location = new Point(14, 276);
+            parcelaText.Margin = new Padding(4, 3, 4, 3);
+            parcelaText.Name = "parcelaText";
+            parcelaText.Size = new Size(223, 23);
+            parcelaText.TabIndex = 5;
+            parcelaText.Visible = false;
+            parcelaText.TextChanged += parcelaText_TextChanged;
             // 
             // buscarParcela
             // 
-            this.buscarParcela.Location = new System.Drawing.Point(12, 266);
-            this.buscarParcela.Name = "buscarParcela";
-            this.buscarParcela.Size = new System.Drawing.Size(192, 23);
-            this.buscarParcela.TabIndex = 6;
-            this.buscarParcela.Text = "Buscar";
-            this.buscarParcela.UseVisualStyleBackColor = true;
-            this.buscarParcela.Visible = false;
-            this.buscarParcela.Click += new System.EventHandler(this.button1_Click);
+            buscarParcela.Location = new Point(14, 320);
+            buscarParcela.Margin = new Padding(4, 3, 4, 3);
+            buscarParcela.Name = "buscarParcela";
+            buscarParcela.Size = new Size(224, 27);
+            buscarParcela.TabIndex = 6;
+            buscarParcela.Text = "Buscar";
+            buscarParcela.UseVisualStyleBackColor = true;
+            buscarParcela.Visible = false;
+            buscarParcela.Click += button1_Click;
             // 
             // textLabel
             // 
-            this.textLabel.Location = new System.Drawing.Point(0, 0);
-            this.textLabel.Name = "textLabel";
-            this.textLabel.Size = new System.Drawing.Size(100, 23);
-            this.textLabel.TabIndex = 15;
+            textLabel.Location = new Point(0, 0);
+            textLabel.Margin = new Padding(4, 0, 4, 0);
+            textLabel.Name = "textLabel";
+            textLabel.Size = new Size(117, 27);
+            textLabel.TabIndex = 15;
             // 
             // provinciaLabel
             // 
-            this.provinciaLabel.AutoSize = true;
-            this.provinciaLabel.Location = new System.Drawing.Point(12, 12);
-            this.provinciaLabel.Name = "provinciaLabel";
-            this.provinciaLabel.Size = new System.Drawing.Size(51, 13);
-            this.provinciaLabel.TabIndex = 8;
-            this.provinciaLabel.Text = "Provincia";
+            provinciaLabel.AutoSize = true;
+            provinciaLabel.Location = new Point(14, 14);
+            provinciaLabel.Margin = new Padding(4, 0, 4, 0);
+            provinciaLabel.Name = "provinciaLabel";
+            provinciaLabel.Size = new Size(56, 15);
+            provinciaLabel.TabIndex = 8;
+            provinciaLabel.Text = "Provincia";
             // 
             // municipioLabel
             // 
-            this.municipioLabel.AutoSize = true;
-            this.municipioLabel.Location = new System.Drawing.Point(9, 51);
-            this.municipioLabel.Name = "municipioLabel";
-            this.municipioLabel.Size = new System.Drawing.Size(52, 13);
-            this.municipioLabel.TabIndex = 9;
-            this.municipioLabel.Text = "Municipio";
-            this.municipioLabel.Visible = false;
+            municipioLabel.AutoSize = true;
+            municipioLabel.Location = new Point(10, 59);
+            municipioLabel.Margin = new Padding(4, 0, 4, 0);
+            municipioLabel.Name = "municipioLabel";
+            municipioLabel.Size = new Size(61, 15);
+            municipioLabel.TabIndex = 9;
+            municipioLabel.Text = "Municipio";
+            municipioLabel.Visible = false;
             // 
             // agregadoLabel
             // 
-            this.agregadoLabel.AutoSize = true;
-            this.agregadoLabel.Location = new System.Drawing.Point(12, 94);
-            this.agregadoLabel.Name = "agregadoLabel";
-            this.agregadoLabel.Size = new System.Drawing.Size(53, 13);
-            this.agregadoLabel.TabIndex = 10;
-            this.agregadoLabel.Text = "Agregado";
-            this.agregadoLabel.Visible = false;
+            agregadoLabel.AutoSize = true;
+            agregadoLabel.Location = new Point(14, 108);
+            agregadoLabel.Margin = new Padding(4, 0, 4, 0);
+            agregadoLabel.Name = "agregadoLabel";
+            agregadoLabel.Size = new Size(59, 15);
+            agregadoLabel.TabIndex = 10;
+            agregadoLabel.Text = "Agregado";
+            agregadoLabel.Visible = false;
             // 
             // zonaLabel
             // 
-            this.zonaLabel.AutoSize = true;
-            this.zonaLabel.Location = new System.Drawing.Point(12, 137);
-            this.zonaLabel.Name = "zonaLabel";
-            this.zonaLabel.Size = new System.Drawing.Size(32, 13);
-            this.zonaLabel.TabIndex = 11;
-            this.zonaLabel.Text = "Zona";
-            this.zonaLabel.Visible = false;
+            zonaLabel.AutoSize = true;
+            zonaLabel.Location = new Point(14, 158);
+            zonaLabel.Margin = new Padding(4, 0, 4, 0);
+            zonaLabel.Name = "zonaLabel";
+            zonaLabel.Size = new Size(34, 15);
+            zonaLabel.TabIndex = 11;
+            zonaLabel.Text = "Zona";
+            zonaLabel.Visible = false;
             // 
             // poligonoLabel
             // 
-            this.poligonoLabel.AutoSize = true;
-            this.poligonoLabel.Location = new System.Drawing.Point(12, 180);
-            this.poligonoLabel.Name = "poligonoLabel";
-            this.poligonoLabel.Size = new System.Drawing.Size(50, 13);
-            this.poligonoLabel.TabIndex = 12;
-            this.poligonoLabel.Text = "Polígono";
-            this.poligonoLabel.Visible = false;
+            poligonoLabel.AutoSize = true;
+            poligonoLabel.Location = new Point(14, 208);
+            poligonoLabel.Margin = new Padding(4, 0, 4, 0);
+            poligonoLabel.Name = "poligonoLabel";
+            poligonoLabel.Size = new Size(55, 15);
+            poligonoLabel.TabIndex = 12;
+            poligonoLabel.Text = "Polígono";
+            poligonoLabel.Visible = false;
             // 
             // parcelaLabel
             // 
-            this.parcelaLabel.AutoSize = true;
-            this.parcelaLabel.Location = new System.Drawing.Point(12, 223);
-            this.parcelaLabel.Name = "parcelaLabel";
-            this.parcelaLabel.Size = new System.Drawing.Size(43, 13);
-            this.parcelaLabel.TabIndex = 13;
-            this.parcelaLabel.Text = "Parcela";
-            this.parcelaLabel.Visible = false;
+            parcelaLabel.AutoSize = true;
+            parcelaLabel.Location = new Point(14, 257);
+            parcelaLabel.Margin = new Padding(4, 0, 4, 0);
+            parcelaLabel.Name = "parcelaLabel";
+            parcelaLabel.Size = new Size(45, 15);
+            parcelaLabel.TabIndex = 13;
+            parcelaLabel.Text = "Parcela";
+            parcelaLabel.Visible = false;
             // 
             // provinciaText
             // 
-            this.provinciaText.Location = new System.Drawing.Point(12, 29);
-            this.provinciaText.Name = "provinciaText";
-            this.provinciaText.Size = new System.Drawing.Size(192, 20);
-            this.provinciaText.TabIndex = 14;
-            this.provinciaText.TextChanged += new System.EventHandler(this.provinciaText_TextChanged);
+            provinciaText.Location = new Point(14, 33);
+            provinciaText.Margin = new Padding(4, 3, 4, 3);
+            provinciaText.Name = "provinciaText";
+            provinciaText.Size = new Size(223, 23);
+            provinciaText.TabIndex = 14;
+            provinciaText.TextChanged += provinciaText_TextChanged;
             // 
             // resultLabel
             // 
-            this.resultLabel.AutoSize = true;
-            this.resultLabel.Location = new System.Drawing.Point(211, 29);
-            this.resultLabel.Name = "resultLabel";
-            this.resultLabel.Size = new System.Drawing.Size(0, 13);
-            this.resultLabel.TabIndex = 16;
+            resultLabel.AutoSize = true;
+            resultLabel.Location = new Point(246, 33);
+            resultLabel.Margin = new Padding(4, 0, 4, 0);
+            resultLabel.Name = "resultLabel";
+            resultLabel.Size = new Size(0, 15);
+            resultLabel.TabIndex = 16;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(253, 33);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(579, 314);
+            dataGridView1.TabIndex = 17;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1085, 646);
-            this.Controls.Add(this.resultLabel);
-            this.Controls.Add(this.provinciaText);
-            this.Controls.Add(this.parcelaLabel);
-            this.Controls.Add(this.poligonoLabel);
-            this.Controls.Add(this.zonaLabel);
-            this.Controls.Add(this.agregadoLabel);
-            this.Controls.Add(this.municipioLabel);
-            this.Controls.Add(this.provinciaLabel);
-            this.Controls.Add(this.textLabel);
-            this.Controls.Add(this.buscarParcela);
-            this.Controls.Add(this.parcelaText);
-            this.Controls.Add(this.poligonoText);
-            this.Controls.Add(this.zonaText);
-            this.Controls.Add(this.agregadoText);
-            this.Controls.Add(this.municipioText);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(844, 368);
+            Controls.Add(dataGridView1);
+            Controls.Add(resultLabel);
+            Controls.Add(provinciaText);
+            Controls.Add(parcelaLabel);
+            Controls.Add(poligonoLabel);
+            Controls.Add(zonaLabel);
+            Controls.Add(agregadoLabel);
+            Controls.Add(municipioLabel);
+            Controls.Add(provinciaLabel);
+            Controls.Add(textLabel);
+            Controls.Add(buscarParcela);
+            Controls.Add(parcelaText);
+            Controls.Add(poligonoText);
+            Controls.Add(zonaText);
+            Controls.Add(agregadoText);
+            Controls.Add(municipioText);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "Form1";
+            Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -226,6 +253,7 @@
         private System.Windows.Forms.Label parcelaLabel;
         private System.Windows.Forms.TextBox provinciaText;
         private System.Windows.Forms.Label resultLabel;
+        private DataGridView dataGridView1;
     }
 }
 
