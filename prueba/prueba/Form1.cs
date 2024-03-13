@@ -1,5 +1,6 @@
 ﻿
 using Newtonsoft.Json;
+using prueba.Exceptions;
 using System.ComponentModel;
 using visorParcelas_1.Geometry;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -70,7 +71,6 @@ namespace prueba
                                                         + zonaText.Text + "/" + poligonoText.Text + "/" + parcelaText.Text;
             var httpClient = new HttpClient();
 
-
             try
             {
                 using (var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5))) // Set a timeout of 5 seconds
@@ -79,8 +79,9 @@ namespace prueba
                     if (response.IsSuccessStatusCode)
                     {
                         var geoJsonString = await response.Content.ReadAsStringAsync();
-                        resultLabel.Text = geoJsonString.Length.ToString();
+                        //resultLabel.Text = geoJsonString.Length.ToString();
                         Root root = JsonConvert.DeserializeObject<Root>(geoJsonString);
+                        if (root.features == null) throw new ParcelaInexistenteException("Esa parcela no existe");
 
                         var data = root.features.Select(f => new
                         {
@@ -95,13 +96,14 @@ namespace prueba
                             PendienteMedia = f.properties.pendiente_media,
                             Coordinates = string.Join(", ", f.geometry.coordinates.SelectMany(level1 => level1.SelectMany(level2 => level2))),
                             GeometryType = f.geometry.type,
+
                         }).ToList<object>();
 
                         dataGridView1.DataSource = new BindingList<object>(data);
 
                         dataGridView1.AllowUserToAddRows = false;
                     }
-                    else { resultLabel.Text = "No existe"; }
+                    else { resultLabel.Text = "No existe ninguna parcela con esos datos"; }
                 }
             }
             catch (TaskCanceledException ex) when (ex.InnerException is TimeoutException)
@@ -110,6 +112,13 @@ namespace prueba
                 Console.WriteLine("Timed out: " + ex.Message);
                 MessageBox.Show("Error happened " + ex.Message);
 
+            }   //Controlamos que la aplicación no pueda contectarse al servidor
+            catch(HttpRequestException ex)
+            {
+                resultLabel.Text = "Error de conexión al servidor";
+            }
+            catch(ParcelaInexistenteException ex) {
+                resultLabel.Text = ex.Message;
             }
         }
     }
