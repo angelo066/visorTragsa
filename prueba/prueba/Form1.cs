@@ -1,9 +1,7 @@
-﻿
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using prueba.Exceptions;
 using System.ComponentModel;
 using visorParcelas_1.Geometry;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace prueba
 {
@@ -73,51 +71,38 @@ namespace prueba
 
             try
             {
-                using (var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5))) // Set a timeout of 5 seconds
+                var response = await httpClient.GetAsync(url);
+                if (response.IsSuccessStatusCode)
                 {
-                    var response = await httpClient.GetAsync(url, cts.Token).ConfigureAwait(false);
-                    if (response.IsSuccessStatusCode)
+                    var geoJsonString = await response.Content.ReadAsStringAsync();
+                    Root root = JsonConvert.DeserializeObject<Root>(geoJsonString);
+                    if (root.features == null) throw new ParcelaInexistenteException("Esa parcela no existe");
+
+                    resultLabel.Text = "";
+                    var data = root.features.Select(f => new
                     {
-                        var geoJsonString = await response.Content.ReadAsStringAsync();
-                        //resultLabel.Text = geoJsonString.Length.ToString();
-                        Root root = JsonConvert.DeserializeObject<Root>(geoJsonString);
-                        if (root.features == null) throw new ParcelaInexistenteException("Esa parcela no existe");
+                        Provincia = f.properties.provincia,
+                        Municipio = f.properties.municipio,
+                        Agregado = f.properties.agregado,
+                        Zona = f.properties.zona,
+                        Poligono = f.properties.poligono,
+                        Parcela = f.properties.parcela,
+                        Recinto = f.properties.recinto,
+                        Altitud = f.properties.altitud,
+                        PendienteMedia = f.properties.pendiente_media,
+                        Coordinates = string.Join(", ", f.geometry.coordinates.SelectMany(level1 => level1.SelectMany(level2 => level2))),
+                        GeometryType = f.geometry.type,
 
-                        var data = root.features.Select(f => new
-                        {
-                            Provincia = f.properties.provincia,
-                            Municipio = f.properties.municipio,
-                            Agregado = f.properties.agregado,
-                            Zona = f.properties.zona,
-                            Poligono = f.properties.poligono,
-                            Parcela = f.properties.parcela,
-                            Recinto = f.properties.recinto,
-                            Altitud = f.properties.altitud,
-                            PendienteMedia = f.properties.pendiente_media,
-                            Coordinates = string.Join(", ", f.geometry.coordinates.SelectMany(level1 => level1.SelectMany(level2 => level2))),
-                            GeometryType = f.geometry.type,
+                    }).ToList<object>();
 
-                        }).ToList<object>();
+                    dataGridView1.DataSource = new BindingList<object>(data);
 
-                        dataGridView1.DataSource = new BindingList<object>(data);
-
-                        dataGridView1.AllowUserToAddRows = false;
-                    }
-                    else { resultLabel.Text = "No existe ninguna parcela con esos datos"; }
+                    dataGridView1.AllowUserToAddRows = false;
                 }
+                else { resultLabel.Text = "No existe ninguna parcela con esos datos"; }
             }
-            catch (TaskCanceledException ex) when (ex.InnerException is TimeoutException)
+            catch (Exception ex)
             {
-                // Handle timeout.
-                Console.WriteLine("Timed out: " + ex.Message);
-                MessageBox.Show("Error happened " + ex.Message);
-
-            }   //Controlamos que la aplicación no pueda contectarse al servidor
-            catch(HttpRequestException ex)
-            {
-                resultLabel.Text = "Error de conexión al servidor";
-            }
-            catch(ParcelaInexistenteException ex) {
                 resultLabel.Text = ex.Message;
             }
         }
