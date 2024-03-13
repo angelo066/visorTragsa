@@ -73,9 +73,6 @@ namespace prueba
                 resultLabel.Text = geoJsonString.Length.ToString();
                 Root root = JsonConvert.DeserializeObject<Root>(geoJsonString);
 
-
-                //dataGridView1.DataSource = root.features;
-
                 var data = root.features.Select(f => new
                 {
                     Provincia = f.properties.provincia,
@@ -89,9 +86,7 @@ namespace prueba
                     PendienteMedia = f.properties.pendiente_media,
                     Coordinates = string.Join(", ", f.geometry.coordinates.SelectMany(level1 => level1.SelectMany(level2 => level2))),
                     GeometryType = f.geometry.type,
-                    CrsType = f.geometry.crs?.type,
-                    CrsName = f.geometry.crs?.properties?.name
-                }).ToList<object>();  // Añadí .ToList<object>() para especificar el tipo de lista.
+                }).ToList<object>();
 
                 dataGridView1.DataSource = new BindingList<object>(data);
 
