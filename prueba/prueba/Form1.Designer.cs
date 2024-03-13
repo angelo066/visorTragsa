@@ -42,7 +42,6 @@
             poligonoLabel = new Label();
             parcelaLabel = new Label();
             provinciaText = new TextBox();
-            resultLabel = new Label();
             dataGridView1 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -50,7 +49,7 @@
             // municipioText
             // 
             municipioText.Anchor = AnchorStyles.Top;
-            municipioText.Location = new Point(26, 77);
+            municipioText.Location = new Point(147, 82);
             municipioText.Margin = new Padding(4, 3, 4, 3);
             municipioText.Name = "municipioText";
             municipioText.Size = new Size(223, 23);
@@ -61,7 +60,7 @@
             // agregadoText
             // 
             agregadoText.Anchor = AnchorStyles.Top;
-            agregadoText.Location = new Point(26, 127);
+            agregadoText.Location = new Point(147, 132);
             agregadoText.Margin = new Padding(4, 3, 4, 3);
             agregadoText.Name = "agregadoText";
             agregadoText.Size = new Size(223, 23);
@@ -72,7 +71,7 @@
             // zonaText
             // 
             zonaText.Anchor = AnchorStyles.Top;
-            zonaText.Location = new Point(26, 177);
+            zonaText.Location = new Point(147, 182);
             zonaText.Margin = new Padding(4, 3, 4, 3);
             zonaText.Name = "zonaText";
             zonaText.Size = new Size(223, 23);
@@ -83,7 +82,7 @@
             // poligonoText
             // 
             poligonoText.Anchor = AnchorStyles.Top;
-            poligonoText.Location = new Point(26, 226);
+            poligonoText.Location = new Point(147, 231);
             poligonoText.Margin = new Padding(4, 3, 4, 3);
             poligonoText.Name = "poligonoText";
             poligonoText.Size = new Size(223, 23);
@@ -94,7 +93,7 @@
             // parcelaText
             // 
             parcelaText.Anchor = AnchorStyles.Top;
-            parcelaText.Location = new Point(26, 276);
+            parcelaText.Location = new Point(147, 281);
             parcelaText.Margin = new Padding(4, 3, 4, 3);
             parcelaText.Name = "parcelaText";
             parcelaText.Size = new Size(223, 23);
@@ -105,7 +104,7 @@
             // buscarParcela
             // 
             buscarParcela.Anchor = AnchorStyles.Top;
-            buscarParcela.Location = new Point(26, 320);
+            buscarParcela.Location = new Point(147, 325);
             buscarParcela.Margin = new Padding(4, 3, 4, 3);
             buscarParcela.Name = "buscarParcela";
             buscarParcela.Size = new Size(224, 27);
@@ -118,7 +117,7 @@
             // textLabel
             // 
             textLabel.Anchor = AnchorStyles.Top;
-            textLabel.Location = new Point(12, 0);
+            textLabel.Location = new Point(133, 0);
             textLabel.Margin = new Padding(4, 0, 4, 0);
             textLabel.Name = "textLabel";
             textLabel.Size = new Size(117, 27);
@@ -128,7 +127,7 @@
             // 
             provinciaLabel.Anchor = AnchorStyles.Top;
             provinciaLabel.AutoSize = true;
-            provinciaLabel.Location = new Point(26, 14);
+            provinciaLabel.Location = new Point(147, 14);
             provinciaLabel.Margin = new Padding(4, 0, 4, 0);
             provinciaLabel.Name = "provinciaLabel";
             provinciaLabel.Size = new Size(56, 15);
@@ -139,7 +138,7 @@
             // 
             municipioLabel.Anchor = AnchorStyles.Top;
             municipioLabel.AutoSize = true;
-            municipioLabel.Location = new Point(22, 59);
+            municipioLabel.Location = new Point(147, 64);
             municipioLabel.Margin = new Padding(4, 0, 4, 0);
             municipioLabel.Name = "municipioLabel";
             municipioLabel.Size = new Size(61, 15);
@@ -151,7 +150,7 @@
             // 
             agregadoLabel.Anchor = AnchorStyles.Top;
             agregadoLabel.AutoSize = true;
-            agregadoLabel.Location = new Point(26, 108);
+            agregadoLabel.Location = new Point(147, 113);
             agregadoLabel.Margin = new Padding(4, 0, 4, 0);
             agregadoLabel.Name = "agregadoLabel";
             agregadoLabel.Size = new Size(59, 15);
@@ -163,7 +162,7 @@
             // 
             zonaLabel.Anchor = AnchorStyles.Top;
             zonaLabel.AutoSize = true;
-            zonaLabel.Location = new Point(26, 158);
+            zonaLabel.Location = new Point(147, 163);
             zonaLabel.Margin = new Padding(4, 0, 4, 0);
             zonaLabel.Name = "zonaLabel";
             zonaLabel.Size = new Size(34, 15);
@@ -175,7 +174,7 @@
             // 
             poligonoLabel.Anchor = AnchorStyles.Top;
             poligonoLabel.AutoSize = true;
-            poligonoLabel.Location = new Point(26, 208);
+            poligonoLabel.Location = new Point(147, 213);
             poligonoLabel.Margin = new Padding(4, 0, 4, 0);
             poligonoLabel.Name = "poligonoLabel";
             poligonoLabel.Size = new Size(55, 15);
@@ -187,7 +186,7 @@
             // 
             parcelaLabel.Anchor = AnchorStyles.Top;
             parcelaLabel.AutoSize = true;
-            parcelaLabel.Location = new Point(26, 257);
+            parcelaLabel.Location = new Point(147, 262);
             parcelaLabel.Margin = new Padding(4, 0, 4, 0);
             parcelaLabel.Name = "parcelaLabel";
             parcelaLabel.Size = new Size(45, 15);
@@ -198,39 +197,28 @@
             // provinciaText
             // 
             provinciaText.Anchor = AnchorStyles.Top;
-            provinciaText.Location = new Point(26, 33);
+            provinciaText.Location = new Point(147, 33);
             provinciaText.Margin = new Padding(4, 3, 4, 3);
             provinciaText.Name = "provinciaText";
             provinciaText.Size = new Size(223, 23);
             provinciaText.TabIndex = 14;
             provinciaText.TextChanged += provinciaText_TextChanged;
             // 
-            // resultLabel
-            // 
-            resultLabel.Anchor = AnchorStyles.Top;
-            resultLabel.AutoSize = true;
-            resultLabel.Location = new Point(258, 33);
-            resultLabel.Margin = new Padding(4, 0, 4, 0);
-            resultLabel.Name = "resultLabel";
-            resultLabel.Size = new Size(0, 15);
-            resultLabel.TabIndex = 16;
-            // 
             // dataGridView1
             // 
             dataGridView1.Anchor = AnchorStyles.Top;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(258, 127);
+            dataGridView1.Location = new Point(377, 33);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(586, 526);
+            dataGridView1.Size = new Size(750, 319);
             dataGridView1.TabIndex = 17;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(868, 665);
+            ClientSize = new Size(1281, 515);
             Controls.Add(dataGridView1);
-            Controls.Add(resultLabel);
             Controls.Add(provinciaText);
             Controls.Add(parcelaLabel);
             Controls.Add(poligonoLabel);
@@ -268,7 +256,6 @@
         private System.Windows.Forms.Label poligonoLabel;
         private System.Windows.Forms.Label parcelaLabel;
         private System.Windows.Forms.TextBox provinciaText;
-        private System.Windows.Forms.Label resultLabel;
         private DataGridView dataGridView1;
     }
 }

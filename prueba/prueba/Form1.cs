@@ -72,8 +72,6 @@ namespace prueba
                     var geoJsonString = await response.Content.ReadAsStringAsync();
                     Root root = JsonConvert.DeserializeObject<Root>(geoJsonString);
                     if (root.features == null) throw new ParcelaInexistenteException("Esa parcela no existe");
-
-                    resultLabel.Text = "";
                     var data = root.features.Select(f => new
                     {
                         Provincia = f.properties.provincia,
@@ -95,13 +93,11 @@ namespace prueba
                     dataGridView1.AllowUserToAddRows = false;
                 }
                 else { 
-                    //resultLabel.Text = "Hay algún parámetro erróneo o no existe esta parcela";
                     MessageBox.Show("Hay algún parámetro erróneo o no existe esta parcela", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                //resultLabel.Text = ex.Message;
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
