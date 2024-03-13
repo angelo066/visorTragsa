@@ -60,6 +60,23 @@ namespace prueba
         // llama a la url
         async Task callAsync()
         {
+
+            try
+            {
+                int provincia = int.Parse(provinciaText.Text);
+                int municipio = int.Parse(municipioText.Text);
+                int agregado = int.Parse(agregadoText.Text);
+                int zona = int.Parse(zonaText.Text);
+                int poligono = int.Parse(poligonoText.Text);
+                int parcela = int.Parse(parcelaText.Text);
+            }
+            catch
+            {
+
+                MessageBox.Show("Los argumentos deben ser numeros enteros", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             var url = "https://localhost:7266/Parcela/" + provinciaText.Text + "/" + municipioText.Text + "/" + agregadoText.Text + "/"
                                                         + zonaText.Text + "/" + poligonoText.Text + "/" + parcelaText.Text;
             var httpClient = new HttpClient();
