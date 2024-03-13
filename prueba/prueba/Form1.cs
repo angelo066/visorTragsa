@@ -23,59 +23,10 @@ namespace prueba
         {
             callAsync();
         }
-
-        private void provinciaText_TextChanged(object sender, EventArgs e)
-        {
-            municipioText.Visible = true;
-            municipioLabel.Visible = true;
-        }
-        private void municipioText_TextChanged(object sender, EventArgs e)
-        {
-            agregadoText.Visible = true;
-            agregadoLabel.Visible = true;
-        }
-
-        private void agregadoText_TextChanged(object sender, EventArgs e)
-        {
-            zonaText.Visible = true;
-            zonaLabel.Visible = true;
-        }
-
-        private void zonaText_TextChanged(object sender, EventArgs e)
-        {
-            poligonoText.Visible = true;
-            poligonoLabel.Visible = true;
-        }
-
-        private void poligonoText_TextChanged(object sender, EventArgs e)
-        {
-            parcelaText.Visible = true;
-            parcelaLabel.Visible = true;
-        }
-
-        private void parcelaText_TextChanged(object sender, EventArgs e)
-        {
-            buscarParcela.Visible = true;
-        }
         // llama a la url
         async Task callAsync()
         {
-
-            try
-            {
-                int provincia = int.Parse(provinciaText.Text);
-                int municipio = int.Parse(municipioText.Text);
-                int agregado = int.Parse(agregadoText.Text);
-                int zona = int.Parse(zonaText.Text);
-                int poligono = int.Parse(poligonoText.Text);
-                int parcela = int.Parse(parcelaText.Text);
-            }
-            catch
-            {
-
-                MessageBox.Show("Los argumentos deben ser numeros enteros", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            if (!checkArgsType()) return;
 
             var url = "https://localhost:7266/Parcela/" + provinciaText.Text + "/" + municipioText.Text + "/" + agregadoText.Text + "/"
                                                         + zonaText.Text + "/" + poligonoText.Text + "/" + parcelaText.Text;
@@ -109,7 +60,8 @@ namespace prueba
 
                     dataGridView1.AllowUserToAddRows = false;
                 }
-                else { 
+                else
+                {
                     MessageBox.Show("Hay algún parámetro erróneo o no existe esta parcela", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -117,6 +69,74 @@ namespace prueba
             {
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private bool checkArgsType()
+        {
+            bool isCorrect = true;
+            try
+            {
+                int provincia = int.Parse(provinciaText.Text);
+                provinciaLabel.ForeColor = Color.Black;
+            }
+            catch
+            {
+                provinciaLabel.ForeColor = Color.Red;
+                isCorrect = false;
+            }
+            try
+            {
+                int municipio = int.Parse(municipioText.Text);
+                municipioLabel.ForeColor = Color.Black;
+            }
+            catch
+            {
+                municipioLabel.ForeColor = Color.Red;
+                isCorrect = false;
+            }
+            try
+            {
+                int agregado = int.Parse(agregadoText.Text);
+                agregadoLabel.ForeColor = Color.Black;
+            }
+            catch
+            {
+                agregadoLabel.ForeColor = Color.Red;
+                isCorrect = false;
+            }
+            try
+            {
+                int zona = int.Parse(zonaText.Text);
+                zonaLabel.ForeColor = Color.Black;
+            }
+            catch
+            {
+                zonaLabel.ForeColor = Color.Red;
+                isCorrect = false;
+            }
+            try
+            {
+                poligonoLabel.ForeColor = Color.Black;
+                int poligono = int.Parse(poligonoText.Text);
+            }
+            catch
+            {
+                poligonoLabel.ForeColor = Color.Red;
+                isCorrect = false;
+            }
+            try
+            {
+                int parcela = int.Parse(parcelaText.Text);
+                parcelaLabel.ForeColor = Color.Black;
+            }
+            catch
+            {
+                parcelaLabel.ForeColor = Color.Red;
+                isCorrect = false;
+            }
+            if(!isCorrect)
+                MessageBox.Show("Los parámetros deben ser números enteros", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return isCorrect;
         }
     }
 }

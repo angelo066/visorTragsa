@@ -54,8 +54,6 @@
             municipioText.Name = "municipioText";
             municipioText.Size = new Size(223, 23);
             municipioText.TabIndex = 1;
-            municipioText.Visible = false;
-            municipioText.TextChanged += municipioText_TextChanged;
             // 
             // agregadoText
             // 
@@ -65,8 +63,6 @@
             agregadoText.Name = "agregadoText";
             agregadoText.Size = new Size(223, 23);
             agregadoText.TabIndex = 2;
-            agregadoText.Visible = false;
-            agregadoText.TextChanged += agregadoText_TextChanged;
             // 
             // zonaText
             // 
@@ -76,8 +72,6 @@
             zonaText.Name = "zonaText";
             zonaText.Size = new Size(223, 23);
             zonaText.TabIndex = 3;
-            zonaText.Visible = false;
-            zonaText.TextChanged += zonaText_TextChanged;
             // 
             // poligonoText
             // 
@@ -87,8 +81,6 @@
             poligonoText.Name = "poligonoText";
             poligonoText.Size = new Size(223, 23);
             poligonoText.TabIndex = 4;
-            poligonoText.Visible = false;
-            poligonoText.TextChanged += poligonoText_TextChanged;
             // 
             // parcelaText
             // 
@@ -98,8 +90,6 @@
             parcelaText.Name = "parcelaText";
             parcelaText.Size = new Size(223, 23);
             parcelaText.TabIndex = 5;
-            parcelaText.Visible = false;
-            parcelaText.TextChanged += parcelaText_TextChanged;
             // 
             // buscarParcela
             // 
@@ -111,7 +101,6 @@
             buscarParcela.TabIndex = 6;
             buscarParcela.Text = "Buscar";
             buscarParcela.UseVisualStyleBackColor = true;
-            buscarParcela.Visible = false;
             buscarParcela.Click += button1_Click;
             // 
             // textLabel
@@ -144,7 +133,6 @@
             municipioLabel.Size = new Size(61, 15);
             municipioLabel.TabIndex = 9;
             municipioLabel.Text = "Municipio";
-            municipioLabel.Visible = false;
             // 
             // agregadoLabel
             // 
@@ -156,7 +144,6 @@
             agregadoLabel.Size = new Size(59, 15);
             agregadoLabel.TabIndex = 10;
             agregadoLabel.Text = "Agregado";
-            agregadoLabel.Visible = false;
             // 
             // zonaLabel
             // 
@@ -168,7 +155,6 @@
             zonaLabel.Size = new Size(34, 15);
             zonaLabel.TabIndex = 11;
             zonaLabel.Text = "Zona";
-            zonaLabel.Visible = false;
             // 
             // poligonoLabel
             // 
@@ -180,7 +166,6 @@
             poligonoLabel.Size = new Size(55, 15);
             poligonoLabel.TabIndex = 12;
             poligonoLabel.Text = "Polígono";
-            poligonoLabel.Visible = false;
             // 
             // parcelaLabel
             // 
@@ -192,7 +177,6 @@
             parcelaLabel.Size = new Size(45, 15);
             parcelaLabel.TabIndex = 13;
             parcelaLabel.Text = "Parcela";
-            parcelaLabel.Visible = false;
             // 
             // provinciaText
             // 
@@ -202,7 +186,6 @@
             provinciaText.Name = "provinciaText";
             provinciaText.Size = new Size(223, 23);
             provinciaText.TabIndex = 14;
-            provinciaText.TextChanged += provinciaText_TextChanged;
             // 
             // dataGridView1
             // 
