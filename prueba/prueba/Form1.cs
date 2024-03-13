@@ -21,7 +21,6 @@ namespace prueba
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             callAsync();
         }
 
@@ -57,10 +56,6 @@ namespace prueba
         private void parcelaText_TextChanged(object sender, EventArgs e)
         {
             buscarParcela.Visible = true;
-        }
-        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-            MessageBox.Show("Error happened " + e.Context.ToString());
         }
         // llama a la url
         async Task callAsync()
@@ -99,11 +94,15 @@ namespace prueba
 
                     dataGridView1.AllowUserToAddRows = false;
                 }
-                else { resultLabel.Text = "No existe ninguna parcela con esos datos"; }
+                else { 
+                    //resultLabel.Text = "Hay algún parámetro erróneo o no existe esta parcela";
+                    MessageBox.Show("Hay algún parámetro erróneo o no existe esta parcela", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
-                resultLabel.Text = ex.Message;
+                //resultLabel.Text = ex.Message;
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

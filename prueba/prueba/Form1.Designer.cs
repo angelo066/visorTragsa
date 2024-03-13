@@ -223,7 +223,6 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(586, 526);
             dataGridView1.TabIndex = 17;
-            dataGridView1.DataError += dataGridView1_DataError;
             // 
             // Form1
             // 
