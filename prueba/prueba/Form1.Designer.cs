@@ -219,16 +219,17 @@
             // 
             dataGridView1.Anchor = AnchorStyles.Top;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(265, 33);
+            dataGridView1.Location = new Point(258, 127);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(579, 314);
+            dataGridView1.Size = new Size(586, 526);
             dataGridView1.TabIndex = 17;
+            dataGridView1.DataError += dataGridView1_DataError;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(868, 376);
+            ClientSize = new Size(868, 665);
             Controls.Add(dataGridView1);
             Controls.Add(resultLabel);
             Controls.Add(provinciaText);
