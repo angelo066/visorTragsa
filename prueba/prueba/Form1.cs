@@ -94,23 +94,5 @@ namespace prueba
 
             }
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Console.WriteLine("Homer");
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Verifica si se hizo clic en la última fila
-            if (e.RowIndex == dataGridView1.Rows.Count - 1)
-            {
-                // Evita acciones en la última fila
-                return;
-            }
-
-            // Acciones específicas al hacer clic en una celda válida
-            // Puedes acceder a la fila y sus valores usando dataGridView1.Rows[e.RowIndex]
-        }
     }
 }
