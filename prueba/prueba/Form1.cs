@@ -28,6 +28,7 @@ namespace prueba
         {
             if (!checkArgsType()) return;
 
+            //Conexión al servidor
             var url = "https://localhost:7266/Parcela/" + provinciaText.Text + "/" + municipioText.Text + "/" + agregadoText.Text + "/"
                                                         + zonaText.Text + "/" + poligonoText.Text + "/" + parcelaText.Text;
             var httpClient = new HttpClient();
@@ -39,7 +40,7 @@ namespace prueba
                 {
                     var geoJsonString = await response.Content.ReadAsStringAsync();
                     Root root = JsonConvert.DeserializeObject<Root>(geoJsonString);
-                    if (root.features == null) throw new ParcelaInexistenteException("Esa parcela no existe");
+                    if (root.features == null) throw new ParcelaInexistenteException("Esa parcela no existe");  
                     var data = root.features.Select(f => new
                     {
                         Provincia = f.properties.provincia,
@@ -73,6 +74,7 @@ namespace prueba
 
         private bool checkArgsType()
         {
+            //Comprobamos que los argumentos se pueden parsear a números enteros y resaltamos en rojo el que esté mal.
             bool isCorrect = true;
             try
             {
